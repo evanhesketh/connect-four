@@ -17,7 +17,6 @@ const board = []; // array of rows, each row is array of cells  (board[y][x])
  *    board = array of rows, each row is array of cells  (board[y][x])
  */
 
-// bug to fix: fails jasmine test but gives expected output in console
 function makeBoard() {
   for (let y = 0; y < HEIGHT; y++) {
     const row = [];
@@ -80,7 +79,12 @@ function findSpotForCol(x) {
 /** placeInTable: update DOM to place piece into HTML table of board */
 
 function placeInTable(y, x) {
-  // TODO: make a div and insert into correct table cell
+  const piece = document.createElement('div');
+  const cell = document.getElementById(`c-${y}-${x}`);
+
+  piece.classList.add('piece', `p${currPlayer}`);
+  cell.append(piece);
+
 }
 
 /** endGame: announce game end */
@@ -93,7 +97,7 @@ function endGame(msg) {
 
 function handleClick(evt) {
   // get x from ID of clicked cell
-  var x = +evt.target.id;
+  const x = +evt.target.id.slice(4);
 
   // get next spot in column (if none, ignore click)
   var y = findSpotForCol(x);
