@@ -112,7 +112,7 @@ describe('handleClick', function () {
 
     // spot on board is empty
     // after one call to handleClick, gets updated with player 1
-    expect(board[y][x]).toEqual(undefined);
+    expect(board[y][x]).toEqual(null);
     handleClick(evt);
     expect(board[y][x]).toEqual(1);
 
@@ -121,7 +121,7 @@ describe('handleClick', function () {
 
     // spot on board is empty
     // after next call to handleClick, gets updated with player 2
-    expect(board[y][x]).toEqual(undefined);
+    expect(board[y][x]).toEqual(null);
     handleClick(evt);
     expect(board[y][x]).toEqual(2);
   });
